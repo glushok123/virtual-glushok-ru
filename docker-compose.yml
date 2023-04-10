@@ -1,0 +1,55 @@
+version: '3.7'
+services:
+  glushok-ru-nginx:
+    image: glushok-ru-nginx:${IMAGE_TAG}
+    container_name: glushok-ru-app-nginx
+    ports:
+      - ${TEST_WEB_PORT}:80
+    volumes:
+      - .:/app
+    depends_on:
+      - glushok-ru-php-fpm
+      - glushok-ru-redis
+
+  glushok-ru-redis:
+    image: redis:3.2.10-alpine
+    container_name: glushok-ru-app-redis
+    ports:
+      - 63791:6379
+
+  glushok-ru-mariadb:
+    image: mariadb:10.1.32
+    container_name: glushok-ru-app-mariadb
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ${TEST_DB_PATH}:/var/lib/mysql
+      - ./docker/development/mariadb/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - 33061:3306
+
+  glushok-ru-php-fpm:
+    image: glushok-ru-php-fpm:${IMAGE_TAG}
+    container_name: glushok-ru-app-php-fpm
+    volumes:
+      - .:/app
+
+  glushok-ru-php-cli:
+    image: glushok-ru-php-cli:${IMAGE_TAG}
+    container_name: glushok-ru-app-php-cli
+    volumes:
+      - .:/app
+
+  glushok-ru-node-cli:
+    image: node:12.18.2-alpine
+    container_name: glushok-ru-app-node-cli
+    volumes:
+      - .:/app
+    working_dir: /app
+
+networks:
+  default:
+    name: glushok-ru-dev_default
