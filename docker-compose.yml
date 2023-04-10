@@ -44,7 +44,7 @@ services:
       - .:/app
 
   glushok-ru-node-cli:
-    image: node:12.18.2-alpine
+    image: node
     container_name: glushok-ru-app-node-cli
     volumes:
       - .:/app
