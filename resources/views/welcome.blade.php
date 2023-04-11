@@ -3,7 +3,7 @@
 @section('content')
 
     <div class='container' id="app">
-        <test-component></test-component>
+        <register-component></register-component>
     </div>
 
 @endsection
@@ -12,6 +12,6 @@
 
 @endsection
 
-@section('description', 'Готовые маркетинговые связки')
-@section('keywords', 'Готовые маркетинговые связки')
-@section('title', 'Готовые маркетинговые связки')
+@section('description', 'Тестовое задание')
+@section('keywords', 'Тестовое задание')
+@section('title', 'Тестовое задание')
