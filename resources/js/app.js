@@ -1,12 +1,12 @@
-import './bootstrap';
-
+//import './bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css";
 import {createApp} from "vue/dist/vue.esm-bundler";
+import RegisterComponent from "./vue/RegisterComponent.vue";
 
-import TestComponent from "./vue/TestComponent.vue";
 
 const app = createApp({
     components: {
-        TestComponent
+        RegisterComponent,
     }
 });
 

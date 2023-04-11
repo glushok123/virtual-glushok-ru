@@ -26,7 +26,6 @@
 	<script src="{{ asset('js/bootstrap/bootstrap.js') }}"></script>
 	<script src="{{ asset('js/toastr/toastr.js') }}"></script>
 
-    <!-- Bootstrap Font Icon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
 	@vite([
